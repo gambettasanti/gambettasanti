@@ -40,8 +40,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(AUTOS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentProductArray = resultObj.data
-            showProductList()
-            //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+            showProductList();
         }
     });
 

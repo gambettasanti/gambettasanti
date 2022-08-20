@@ -196,14 +196,28 @@ a.custom-card:hover {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .login-button {
-  background-color: #04AA6D;
+  background-color: #0087F7 ;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
+}
+
+.login-input {
+ 
+  border: 1px solid #0087F7;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
 }
