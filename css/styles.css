@@ -192,7 +192,7 @@ a.custom-card:hover {
 .login { 
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 15px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
@@ -203,7 +203,7 @@ a.custom-card:hover {
   background-color: #0087F7 ;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 20px 0;
   border: none;
   cursor: pointer;
   width: 100%;
