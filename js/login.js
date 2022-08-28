@@ -9,4 +9,6 @@ function loguear() {
         alert('Complete los campos vacios');  
     }
 
+    if (email.value) localStorage.setItem("nombre", email.value);
+       
   }
