@@ -6,6 +6,11 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+let CAT_NUMBER = localStorage.getItem('catID');
+
+let PRODUCTS = `${PRODUCTS_URL}${CAT_NUMBER}${EXT_TYPE}`
+
+
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";

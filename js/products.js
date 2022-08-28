@@ -1,4 +1,3 @@
-const AUTOS_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 let currentProductArray = [];
 let minCount = undefined;
 let maxCount = undefined;
@@ -37,7 +36,7 @@ function showProductList(){
 
 document.addEventListener("DOMContentLoaded", function(e){
 
-    getJSONData(AUTOS_URL).then(function(resultObj){
+    getJSONData(PRODUCTS).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentProductArray = resultObj.data
             showProductList();
