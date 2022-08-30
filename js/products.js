@@ -39,8 +39,8 @@ function sortProducts(criteria, array){
 function showProductList(){
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentProductArray.products.length; i++){
-        let product = currentProductArray.products[i];
+    for(let i = 0; i < currentProductArray.length; i++){
+        let product = currentProductArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.soldCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.soldCount) <= maxCount))){
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     getJSONData(PRODUCTS).then(function(resultObj){
         if (resultObj.status === "ok"){
-            currentProductArray = resultObj.data
+            currentProductArray = resultObj.data.products
             showProductList();
         }
     });
