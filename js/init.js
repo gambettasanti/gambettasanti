@@ -10,6 +10,8 @@ let CAT_NUMBER = localStorage.getItem('catID');
 
 let PRODUCTS = `${PRODUCTS_URL}${CAT_NUMBER}${EXT_TYPE}`
 
+document.getElementById("mostrar_nombre").innerHTML = (localStorage.getItem("nombre"));
+
 
 
 let showSpinner = function(){

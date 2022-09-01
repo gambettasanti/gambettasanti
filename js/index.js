@@ -12,6 +12,4 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
-    document.getElementById("mostrar_nombre").innerHTML = (localStorage.getItem("nombre"));
-    
 });

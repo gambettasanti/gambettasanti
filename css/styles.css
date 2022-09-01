@@ -221,3 +221,8 @@ a.custom-card:hover {
   align-items: center;
   
 }
+
+.normal-font { 
+  font-weight:normal;
+  font-family: 'Raleway', serif 
+}
