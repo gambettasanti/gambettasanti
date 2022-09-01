@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentProductArray = resultObj.data.products
+            document.getElementById("pag-name").innerHTML = resultObj.data.catName;
             showProductList();
         }
     });
@@ -132,4 +133,3 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
-
