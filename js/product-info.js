@@ -42,11 +42,24 @@ function showComments(){
 
     for (let i = 0; i < currentComment.length; i++){
         let product = currentComment[i];
-  
+        let stars = '';
+
+        for (let a = 0; a < product.score; a++){
+            stars +=`
+            <span class="fa fa-star checked"></span>
+            `   
+        } 
+
+        for (let a = 0; a < (5- product.score); a++){
+            stars +=`
+            <span class="fa fa-star"></span>
+            `   
+            } 
 
         htmlContentToAppend +=` 
 
-            <p class="img-thumbnail"> <b> ${product.user} </b> - ${product.dateTime} - 
+            <p class="img-thumbnail"> <b> ${product.user} </b> - ${product.dateTime} - ${stars}
+            
             
             
             <br> ${product.description} </p>
@@ -59,6 +72,63 @@ function showComments(){
 
 }
 
+function addOpinion(){
+    let htmlContentToAppend = ' ';
+
+    htmlContentToAppend += `
+        <p> <b> Comentar </b> </p> 
+            <label>Tu opinion:</label><br>
+            <input type="text" id="ImputOpinion" class="ImputOpinion" > <br>
+            <label>Tu puntuacion:</label><br>
+            <input type="number" id="ImputPunt" class="ImputPunt"  value="1" min="1" max="5" > <br> </br> 
+            <input type="button" onclick="addComment()" value="Enviar" class="submitButton">
+         `
+
+    document.getElementById("opinion").innerHTML += htmlContentToAppend;
+
+}
+
+function addComment(){
+    commentary = document.getElementById('ImputOpinion').value
+    points = document.getElementById('ImputPunt').value
+    let stars = ' ';
+    let htmlContentToAppend = ' ';
+    const date = new Date();
+    let year = date.getFullYear()
+    let month = date.getMonth()
+    let day = date.getDate()
+    let time = date.getHours();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let seconds= date.getSeconds();
+
+
+
+    for (let a = 0; a < points; a++){
+        stars +=`
+        <span class="fa fa-star checked"></span>
+        `   
+    } 
+
+    for (let a = 0; a < (5- points); a++){
+        stars +=`
+        <span class="fa fa-star"></span>
+        `   
+        } 
+
+    htmlContentToAppend +=` 
+
+        <p class="img-thumbnail"> <b> ${localStorage.getItem("nombre")} </b> - ${year}-${month}-${day} ${hour}:${minute}:${seconds} - ${stars}
+        
+        
+        
+        <br> ${commentary} </p>
+ 
+    `
+
+    document.getElementById("product").innerHTML += htmlContentToAppend;
+
+ }
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -67,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             currentProduct = resultObj.data
             showProduct();
+            addOpinion();
         }
     });
 
