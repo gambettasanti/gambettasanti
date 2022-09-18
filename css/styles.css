@@ -226,3 +226,7 @@ a.custom-card:hover {
   font-weight:normal;
   font-family: 'Raleway', serif 
 }
+
+.imagenProd{ 
+  max-width: 300px;
+}

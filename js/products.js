@@ -6,6 +6,10 @@ const ORDER_DESC_BY_PRICE = "10";
 const ORDER_BY_REL = "Cant.";
 let currentSortCriteria = undefined;
 
+function setProdID(id) {
+    localStorage.setItem("ProdID", id);
+    window.location = "product-info.html"
+}
 
 function sortProducts(criteria, array){
     let result = [];
@@ -43,7 +47,7 @@ function showProductList(){
             ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${product.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setProdID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${product.image}" alt="${product.description}" class="img-thumbnail">
@@ -133,3 +137,4 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
+
