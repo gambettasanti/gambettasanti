@@ -82,6 +82,8 @@ function addOpinion(){
             <label>Tu puntuacion:</label><br>
             <input type="number" id="ImputPunt" class="ImputPunt"  value="1" min="1" max="5" > <br> </br> 
             <input type="button" onclick="addComment()" value="Enviar" class="submitButton">
+            <hr>
+            <p> <b> Productos Relacionados </b> </p>
          `
 
     document.getElementById("opinion").innerHTML += htmlContentToAppend;
@@ -130,6 +132,30 @@ function addComment(){
 
  }
 
+function showRelacionados() {
+    let htmlContentToAppend = ' ';
+
+    for (let i = 0; i < currentProduct.relatedProducts.length; i++){
+        let product = currentProduct.relatedProducts[i];
+
+        htmlContentToAppend +=`
+
+        <div class = "imagenProd"> 
+            <div onclick="setProdID(${product.id})" class="card mb-4 shadow-sm custom-card cursor-active" >
+              <img class="bd-placeholder-img card-img-top" src="${product.image}">
+              <p class="m-3"> ${product.name} </p>
+            </div>
+        </div>  
+        `
+    } 
+
+
+
+    document.getElementById("relacionados").innerHTML += htmlContentToAppend;
+
+}
+
+
 
 document.addEventListener("DOMContentLoaded", function(e){
 
@@ -138,6 +164,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             currentProduct = resultObj.data
             showProduct();
             addOpinion();
+            showRelacionados();
         }
     });
 
@@ -150,3 +177,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
+
+function setProdID(id) {
+    localStorage.setItem("ProdID", id);
+    window.location = "product-info.html"
+}

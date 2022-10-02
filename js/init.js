@@ -15,9 +15,27 @@ let ProductINFO = `${PRODUCT_INFO_URL}${PRODUCT_NUMBER}${EXT_TYPE}`;
 
 let ProductComment = `${PRODUCT_INFO_COMMENTS_URL}${PRODUCT_NUMBER}${EXT_TYPE}`;
 
-document.getElementById("mostrar_nombre").innerHTML = (localStorage.getItem("nombre"));
+function mostrarNombre(){
+  let htmlContentToAppend = ' ';
 
+  htmlContentToAppend = `
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      ${localStorage.getItem("nombre")}
+      </a>
 
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+        <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+        <li><a class="dropdown-item" href="index.html">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+
+  `
+
+  document.getElementById("mostrar_nombre").innerHTML = htmlContentToAppend;
+
+}
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -51,3 +69,9 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function(e){
+
+  mostrarNombre();
+
+});

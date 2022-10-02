@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function(e){
+
+    localStorage.removeItem("nombre");
+  
+  });
+
 function loguear() {  
 
     let pw1 = document.getElementById("psw1");  
