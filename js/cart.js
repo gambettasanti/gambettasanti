@@ -1,4 +1,5 @@
 let currentCartArray = [];
+let forms = document.querySelectorAll('.needs-validation');
 
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -48,3 +49,33 @@ function ShowCart () {
     document.getElementById("mostrar").innerHTML = htmlContentToAppend;
 
 }
+
+
+document.getElementById("form").addEventListener('submit', event =>{
+    if(!validation()){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    form.classList.add('was-validated');
+    ['change', 'input'].forEach(elemento => {document.body.addEventListener(elemento, validation)})
+  })
+
+  function validation(){
+    let validity = true;
+   
+    if (terminos.checked) {
+      validity = true;
+      btn.classList.remove("text-danger");
+      btn.classList.add("text-primary");
+      document.getElementById("payMetod").innerHTML = ""
+  
+    } else  {
+      validity = false;
+      btn.classList.add("text-danger")
+      document.getElementById("payMetod").innerHTML = `Debe seleccionar metodo de pago `
+    }
+
+    return validity;
+  
+  
+  }
