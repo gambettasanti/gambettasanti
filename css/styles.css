@@ -231,12 +231,12 @@ a.custom-card:hover {
   max-width: 300px;
 }
 
-.ImputPunt{
+.InputPunt{
   max-width: 40px;
   margin: 5px;
 }
 
-.ImputOpinion{
+.InputOpinion{
   width: 100%;
   max-width: 330px;
   padding: 15px;

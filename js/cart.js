@@ -1,6 +1,6 @@
 let currentCartArray = [];
-let forms = document.querySelectorAll('.needs-validation');
-
+let DOLLAR_SYMBOL = "USD ";
+let amount = '1';
 
 document.addEventListener("DOMContentLoaded", function(e){
 
@@ -11,10 +11,27 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 
+
+    document.getElementById("premiumRadio").addEventListener("change", function(){
+      mailingCostToShow = (currentCartArray.data.articles[0].unitCost * amount) * 0.15;
+      updateTotalCosts();
+  });
+  
+  document.getElementById("expressRadio").addEventListener("change", function(){
+      mailingCostToShow = (currentCartArray.data.articles[0].unitCost * amount) * 0.07;
+      updateTotalCosts();
+  });
+
+  document.getElementById("standardRadio").addEventListener("change", function(){
+      mailingCostToShow = (currentCartArray.data.articles[0].unitCost * amount) * 0.05;
+      updateTotalCosts();
+  });
+
 });
 
-function TotalPrice(cantidad){ 
-    currentCartArray.data.articles[0].count = cantidad;
+function TotalPrice(quantity){ 
+    currentCartArray.data.articles[0].count = quantity; 
+    amount = quantity;
     ShowCart();
 }
 
@@ -36,7 +53,7 @@ function ShowCart () {
             USD ${product.unitCost}
         </div>
         <div class="col">
-            <input value="${product.count}" onchange='TotalPrice(this.value)' type="number" id="ImputPunt" class="ImputPunt" min="1">
+            <input value="${product.count}" onchange='TotalPrice(this.value)' type="number" id="InputPunt" class="InputPunt" min="1">
         </div>
         <div class="col">
             <b> USD ${product.count * product.unitCost} <b>
@@ -58,7 +75,8 @@ document.getElementById("form").addEventListener('submit', event =>{
     }
     form.classList.add('was-validated');
     ['change', 'input'].forEach(elemento => {document.body.addEventListener(elemento, validation)})
-  })
+
+})
 
   function validation(){
     let validity = true;
@@ -74,8 +92,17 @@ document.getElementById("form").addEventListener('submit', event =>{
       btn.classList.add("text-danger")
       document.getElementById("payMetod").innerHTML = `Debe seleccionar metodo de pago `
     }
-
     return validity;
-  
-  
+  }
+
+  function updateTotalCosts(){
+    let unitProductCostHTML = document.getElementById("productCostText");
+    let mailingCostHTML = document.getElementById("mailingText");
+    let totalCostHTML = document.getElementById("totalCostText");
+
+    let unitCostToShow = DOLLAR_SYMBOL + currentCartArray.data.articles[0].unitCost;
+
+    unitProductCostHTML.innerHTML = unitCostToShow;
+    mailingCostHTML.innerHTML = DOLLAR_SYMBOL + mailingCostToShow;
+    totalCostHTML.innerHTML = DOLLAR_SYMBOL + ((currentCartArray.data.articles[0].unitCost * amount)+ mailingCostToShow);
   }
