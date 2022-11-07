@@ -1,6 +1,7 @@
 let currentCartArray = [];
 let DOLLAR_SYMBOL = "USD ";
 let amount = '1';
+//let forms = document.querySelectorAll('.needs-validation');
 
 document.addEventListener("DOMContentLoaded", function(e){
 
@@ -25,6 +26,25 @@ document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("standardRadio").addEventListener("change", function(){
       mailingCostToShow = (currentCartArray.data.articles[0].unitCost * amount) * 0.05;
       updateTotalCosts();
+  });
+
+  let childNodes = document.getElementById("cardMethod").getElementsByTagName('*');
+  for (var node of childNodes) {
+    node.disabled = document.getElementById("payElection").value;
+  }
+
+  document.getElementById("payElection").addEventListener("change", function(){    
+    for (var node of childNodes) {
+      node.disabled = !(document.getElementById("payElection").value);
+    }
+    document.getElementById("bankMethod").disabled = document.getElementById("payElection2").value;
+  });
+
+  document.getElementById("payElection2").addEventListener("change", function(){
+    for (var node of childNodes) {
+      node.disabled = document.getElementById("payElection").value;
+    }
+    document.getElementById("bankMethod").disabled = !(document.getElementById("payElection2").value);
   });
 
 });
@@ -69,9 +89,11 @@ function ShowCart () {
 
 
 document.getElementById("form").addEventListener('submit', event =>{
-    if(!validation()){
+    if(!validation() || !(document.getElementById('form').checkValidity())){
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      alert("HAS COMPRADO CON EXITO!");
     }
     form.classList.add('was-validated');
     ['change', 'input'].forEach(elemento => {document.body.addEventListener(elemento, validation)})
@@ -80,8 +102,13 @@ document.getElementById("form").addEventListener('submit', event =>{
 
   function validation(){
     let validity = true;
-   
-    if (terminos.checked) {
+    let CardNumber = document.getElementById('cardNumber').value;
+    let SecurityCode = document.getElementById('securityCode').value;
+    let ExpirationDate = document.getElementById('exiprationDate').value;
+    let BankMethod = document.getElementById('bankMethod').value;
+    
+
+    if ((payElection.checked && CardNumber != '' && SecurityCode != '' && ExpirationDate != '' ) || (payElection2.checked && BankMethod != '')) {
       validity = true;
       btn.classList.remove("text-danger");
       btn.classList.add("text-primary");
@@ -105,4 +132,8 @@ document.getElementById("form").addEventListener('submit', event =>{
     unitProductCostHTML.innerHTML = unitCostToShow;
     mailingCostHTML.innerHTML = DOLLAR_SYMBOL + mailingCostToShow;
     totalCostHTML.innerHTML = DOLLAR_SYMBOL + ((currentCartArray.data.articles[0].unitCost * amount)+ mailingCostToShow);
+  }
+
+  function showAlertSuccess() {
+    document.getElementById("alert-success").classList.add("show");
   }

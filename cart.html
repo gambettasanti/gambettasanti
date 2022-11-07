@@ -37,7 +37,7 @@
     </div>
   </nav>
   <main class="pb-5 container">
-  <form action="#" method="get" class="row mt-4 needs-validation" id="form" novalidate>
+    <form  method="get" class="row mt-4 needs-validation" id="form" novalidate>
       <div class="text-center p-4">
         <h2>Carrito de compras</h2>
       </div>
@@ -70,15 +70,15 @@
         <h4 class="mb-3">Tipo de envio </h4>
         <div class="d-block my-3">
           <div class="custom-control custom-radio">
-            <input id="premiumRadio" name="publicationType" type="radio" class="custom-control-input" required>
+            <input id="premiumRadio" name="sendingType" type="radio" class="custom-control-input" required>
             <label class="custom-control-label" for="premiumRadio">Premium 2 a 5 dias (15%)</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="expressRadio" name="publicationType" type="radio" class="custom-control-input" required>
+            <input id="expressRadio" name="sendingType" type="radio" class="custom-control-input" required>
             <label class="custom-control-label" for="expressRadio">Express 5 a 8 dias (7%)</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="standardRadio" name="publicationType" type="radio" class="custom-control-input" required>
+            <input id="standardRadio" name="sendingType" type="radio" class="custom-control-input" required>
             <label class="custom-control-label" for="standardRadio">Standar 12 a 15 dias (5%) </label>
             <div class="invalid-feedback">
               Selecciona un tipo de envio.
@@ -96,8 +96,6 @@
               Ingresa una calle.
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-3">
             <label>Numero</label>
             <input type="number" class="form-control" id="numero" required>
@@ -105,7 +103,6 @@
               Ingresa un numero.
             </div>
           </div>
-        </div>
         <div class="row">
           <div class="col-md-8">
             <label>Esquina</label>
@@ -144,7 +141,8 @@
       <div class="col-sm-12">
         <h4 class="mb-3">Formas de pago</h4>
         <p> Transferencia bancaria
-          <button type="button" class="btn btn-link ps-1 mt-2" data-bs-toggle="modal" data-bs-target="#paymetods" id="btn">
+          <button type="button" class="btn btn-link ps-1 mt-2" data-bs-toggle="modal" data-bs-target="#paymetods"
+            id="btn">
             Seleccionar
         </p>
         </button>
@@ -156,7 +154,7 @@
           <button type="submit" class="btn btn-primary btn-lg btn-block">Finalizar compra</button>
         </div>
       </div>
-  </form>
+    </form>
   </main>
   <div class="modal fade" tabindex="-1" role="dialog" id="paymetods">
     <div class="modal-dialog" role="document">
@@ -164,31 +162,47 @@
         <div class="modal-header">
           <h5 class="modal-title">Forma de pago</h5>
         </div>
-        <div class="modal-body">
-          <input type="radio" class="form-check-input " id="terminos" required>
-          <div class="invalid-feedback">
+        <div class="modal-body">  
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="payElection" name="payingType" required>
+            <div class="invalid-feedback"> </div>
+            <label class="custom-control-label" for="payElection">Tarjeta de credito:</label>
           </div>
-          <label class="form-check-label " for="terminos">Tarjeta de credito:</label>
-          <hr>
-          <div class="form-row">
-            <div class="col-md-6">
-              <label for="inputEmail4">Numero de tarjeta</label>
-              <input type="number" class="form-control">
+            <hr>
+            <div id="cardMethod">
+              <div class="row"> 
+                <div class="col">
+                  <label for="cardNumber" > Numero de tarjeta </label>
+                  <input id='cardNumber' type="number">
+                </div>
+                <div class="col">
+                  <label for="securtityCode"> Codigo de seg. </label>
+                  <input id="securityCode" type="number"> 
+                </div>
+              </div> 
+              <div class="form-group col-md-6">
+                <label for="exiprationDate"> Vencimiento (MM/AA) </label>
+                <input id='exiprationDate' type="text" >
+              </div>
+             </div>
+            <p>
+            <div>
+              <input type="radio" class="custom-control-input" id="payElection2" name="payingType" required>
+              <div class="invalid-feedback"> </div>
+              <label class="custom-control-label" for="payElection2">Transferencia bancaria</label>
             </div>
-            <div class="col-md-3">
-              <label>Codigo de seg.</label>
-              <input type="number" class="form-control">
+            <hr>
+            <div class="col-md-8 mb-1">
+              <label for="bankMethod" > Numero de cuenta </label>
+              <input id="bankMethod" type="number" disabled> 
             </div>
-          </div>  
-          <input type="radio" class="form-check-input " id="terminos" required>
-          <label class="form-check-label " for="terminos">Transferencia bancaria:</label>
-          <hr>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
-    </div>
+    </div> 
+  </div>
   </div>
   <footer class="text-muted">
     <div class="container">
