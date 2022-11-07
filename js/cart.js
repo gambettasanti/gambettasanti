@@ -1,7 +1,7 @@
 let currentCartArray = [];
 let DOLLAR_SYMBOL = "USD ";
 let amount = '1';
-//let forms = document.querySelectorAll('.needs-validation');
+
 
 document.addEventListener("DOMContentLoaded", function(e){
 
