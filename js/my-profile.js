@@ -31,9 +31,16 @@ document.addEventListener("DOMContentLoaded", function(e){
     if ((localStorage.getItem('primerApellido') != '') && (localStorage.getItem('primerNombre'))) {
         document.getElementById('firstName').value = localStorage.getItem('primerNombre');
         document.getElementById('firstLastname').value = localStorage.getItem('primerApellido');
+        if (localStorage.getItem('telefono') != '') {
+          document.getElementById('telNumber').value = localStorage.getItem('telefono');
+        }
+        if (localStorage.getItem('segundoNombre') != '') {
+          document.getElementById('secondName').value = localStorage.getItem('segundoNombre');
+        }
         if (localStorage.getItem('segundoApellido') != '') {
-            document.getElementById('secondLastname').value = localStorage.getItem('segundoApellido');
+          document.getElementById('secondLastName').value = localStorage.getItem('segundoApellido');
         }
     }
     
   });
+   
