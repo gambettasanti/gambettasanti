@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(e){
 
-    localStorage.removeItem("nombre");
+    localStorage.removeItem("email");
+    localStorage.removeItem("primerNombre");
+    localStorage.removeItem("segundoNombre");
+    localStorage.removeItem("primerApellido");
+    localStorage.removeItem("segundoApellido");
+    localStorage.removeItem("telefono");
   
   });
 
@@ -15,6 +20,6 @@ function loguear() {
         alert('Complete los campos vacios');  
     }
 
-    if (email.value) localStorage.setItem("nombre", email.value);
+    if (email.value) localStorage.setItem("email", email.value);
        
   }

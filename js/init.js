@@ -21,7 +21,7 @@ function mostrarNombre(){
   htmlContentToAppend = `
     <div class="dropdown">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-      ${localStorage.getItem("nombre")}
+      ${localStorage.getItem("email")}
       </a>
 
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -71,7 +71,11 @@ let getJSONData = function(url){
 }
 
 document.addEventListener("DOMContentLoaded", function(e){
-
+  
+  if (!localStorage.getItem("email")) {
+    window.location.href = "index.html"
+  }
   mostrarNombre();
-
+ 
 });
+
